@@ -3,7 +3,7 @@ name: Docker Build and Test
 on:
   push:
     branches: [ main ]
-   pull_request:
+  pull_request:
     branches: [ main ]
 
 jobs:
@@ -29,5 +29,5 @@ jobs:
         curl -f http://localhost:5001/ || exit 1
         curl -f http://localhost:5001/health || exit 1
 
-    -name: Stop container
+    - name: Stop container
      run: docker stop test-flask
