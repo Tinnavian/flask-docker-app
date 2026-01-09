@@ -9,25 +9,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-
+      
     - name: Build Docker image
       run: docker build -t flask-app:${{ github.sha }} .
-
+      
     - name: Run container
       run: docker run -d --name test-flask -p 5001:5000 flask-app:${{ github.sha }}
-
+      
     - name: Wait for container to start
       run: sleep 5
-
+      
     - name: Test health endpoint
       run: |
         curl -f http://localhost:5001/ || exit 1
         curl -f http://localhost:5001/health || exit 1
-
+        
     - name: Stop container
-     run: docker stop test-flask
+      run: docker stop test-flask
