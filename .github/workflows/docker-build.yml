@@ -31,7 +31,7 @@ jobs:
       run: pip install pytest pytest-cov
 
     - name: Run tests with Pytest
-      run: pytest tests/ -v --cov=app --cov-report-term
+      run: pytest tests/ -v --cov=app --cov-report=term
 
     - name: Build Docker image
       run: docker build -t flask-app:${{ github.sha }} .
