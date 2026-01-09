@@ -1,15 +1,17 @@
-from flask import Flask
+"""Simple Flask application with Docker support."""
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
-	return "Hello from Docker container!"
-	return "OMG is this v1.01 update???"
+def home():
+    """Home endpoint.""" 
+    return 'Hello from Flask in Docker!'
 
 @app.route('/health')
 def health():
-	return {"status": "healthy", "service": "flask-app"}, 200
+    """Health check endpoint."""
+    return jsonify({"status": "healthy"})
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
