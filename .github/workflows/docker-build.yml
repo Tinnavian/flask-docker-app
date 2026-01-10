@@ -50,7 +50,7 @@ jobs:
     - name: Stop container
       run: docker stop test-flask
       
- - name: Login to Yandex Container Registry
+     - name: Login to Yandex Container Registry
       run: |
         echo '${{ secrets.YANDEX_API_KEY }}' | docker login --username json_key --password-stdin ${{ secrets.YANDEX_REGISTRY_URL }}
       
