@@ -64,7 +64,7 @@ jobs:
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/flask-app:${{ github.sha }}
         
     - name: Login to Yandex Container Registry
-      run: docker login --username json_key --password-stdin ${{ secrets.YANDEX_REGISTRY_URL }} <<< '${{ secrets.YANDEX_API_KEY }}'
+      run: echo '${{ secrets.YANDEX_API_KEY }}' | docker login --username json_key --password-stdin ${{ secrets.YANDEX_REGISTRY_URL }}
       
     - name: Push to Yandex Container Registry
       run: |
